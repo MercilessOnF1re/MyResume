@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manav Jaswani — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Tokens ── */
+    :root {
+      --bg:        #0b0e14;
+      --surface:   #111520;
+      --border:    #1e2535;
+      --accent:    #4f8ef7;
+      --accent2:   #a78bfa;
+      --text:      #e2e8f0;
+      --muted:     #6b7a99;
+      --tag-bg:    #151c2e;
+
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-mono:    'Space Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── Layout ── */
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    /* ── Header ── */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 40px;
+      margin-bottom: 56px;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .name-block h1 {
+      font-size: clamp(2.2rem, 6vw, 3.4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      background: linear-gradient(120deg, #e2e8f0 0%, var(--accent) 60%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .name-block .tagline {
+      margin-top: 6px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      letter-spacing: 0.05em;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .contact-links a {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .contact-links a:hover {
+      border-color: var(--accent);
+      background: rgba(79, 142, 247, 0.08);
+    }
+
+    .edu-bar {
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .edu-bar .pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: var(--accent2);
+      background: rgba(167, 139, 250, 0.1);
+      border: 1px solid rgba(167, 139, 250, 0.25);
+      border-radius: 20px;
+      padding: 4px 12px;
+    }
+
+    .edu-bar .degree {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 52px;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+
+    .skill-group h4 {
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      color: var(--accent2);
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 3px 8px;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .tag.adv { border-color: rgba(79,142,247,0.4); color: var(--accent); }
+    .tag.int { border-color: var(--border); color: var(--muted); }
+
+    /* ── Experience & Projects ── */
+    .entry {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 24px;
+      margin-bottom: 14px;
+      transition: border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .entry::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .entry:hover { border-color: rgba(79,142,247,0.3); }
+    .entry:hover::before { opacity: 1; }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .entry-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .entry-sub {
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-family: var(--font-mono);
+      margin-top: 2px;
+    }
+
+    .entry-date {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .entry ul {
+      padding-left: 18px;
+    }
+
+    .entry ul li {
+      font-size: 0.87rem;
+      color: #a8b3cc;
+      margin-bottom: 5px;
+      line-height: 1.6;
+    }
+
+    /* ── About ── */
+    .about-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px 26px;
+      font-size: 0.9rem;
+      color: #a8b3cc;
+      line-height: 1.8;
+    }
+
+    /* ── Courses ── */
+    .courses-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .course-tag {
+      font-size: 0.78rem;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 5px 14px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .contact-links { align-items: flex-start; }
+      .entry-header { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <header>
+    <div class="header-top">
+      <div class="name-block">
+        <h1>Manav Jaswani</h1>
+        <p class="tagline">// CS @ HITS &nbsp;·&nbsp; Python · ML · Data</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:manavjaswani10@gmail.com">manavjaswani10@gmail.com</a>
+        <a href="https://www.linkedin.com/in/manav-jaswani-682215221/" target="_blank" rel="noopener">linkedin.com/in/manav-jaswani</a>
+      </div>
+    </div>
+    <div class="edu-bar">
+      <span class="pill">B.Tech Computer Science</span>
+      <span class="degree">Hindustan Institute of Technology and Science, Chennai &nbsp;·&nbsp; Graduating June 2027</span>
+    </div>
+  </header>
+
+  <!-- Technical Skills -->
+  <section>
+    <div class="section-label">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h4>Languages</h4>
+        <div class="tag-list">
+          <span class="tag adv">Python</span>
+          <span class="tag int">C++</span>
+          <span class="tag int">C</span>
+          <span class="tag int">Java</span>
+          <span class="tag int">HTML</span>
+          <span class="tag int">SQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Tools & Platforms</h4>
+        <div class="tag-list">
+          <span class="tag adv">Machine Learning</span>
+          <span class="tag adv">Data Analysis</span>
+          <span class="tag adv">Data Engineering</span>
+          <span class="tag int">Power BI</span>
+          <span class="tag int">SSMS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Python Libraries</h4>
+        <div class="tag-list">
+          <span class="tag adv">Matplotlib</span>
+          <span class="tag adv">Seaborn</span>
+          <span class="tag adv">Pandas</span>
+          <span class="tag adv">NumPy</span>
+          <span class="tag int">Scikit-learn</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>ML & Data</h4>
+        <div class="tag-list">
+          <span class="tag adv">Model Training</span>
+          <span class="tag adv">Feature Engineering</span>
+          <span class="tag int">Data Cleaning</span>
+          <span class="tag int">Data Visualisation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Relevant Courses -->
+  <section>
+    <div class="section-label">Certifications & Courses</div>
+    <div class="courses-grid">
+      <span class="course-tag">Python — WhiteHat Jr</span>
+      <span class="course-tag">Data Analysis — WhiteHat Jr</span>
+      <span class="course-tag">AI Infrastructure & Operations — Nvidia</span>
+      <span class="course-tag">Fullstack Development — Vidhyakshina</span>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section>
+    <div class="section-label">Experience</div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Data Engineer Intern</div>
+          <div class="entry-sub">Positive Integers</div>
+        </div>
+        <div class="entry-date">May – July 2026</div>
+      </div>
+      <ul>
+        <li>Gained hands-on experience in data cleaning and preprocessing pipelines, ensuring data quality and consistency across datasets.</li>
+        <li>Performed data sorting, transformation, and aggregation to prepare structured datasets for downstream analysis and modelling.</li>
+        <li>Built data visualizations using Matplotlib, Seaborn, and other Python libraries to communicate insights effectively to the team.</li>
+        <li>Developed and trained machine learning models, gaining practical exposure to the end-to-end ML workflow — from feature engineering to model evaluation.</li>
+        <li>Delivered a capstone project applying the skills acquired during the internship, combining data engineering and ML to solve a real-world problem.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Data Analysis Intern</div>
+          <div class="entry-sub">Saksoft</div>
+        </div>
+        <div class="entry-date">May – June 2025</div>
+      </div>
+      <ul>
+        <li>Used SQL (SSMS) to extract, clean, and analyze datasets, writing optimized queries with joins and aggregations to generate actionable insights.</li>
+        <li>Built interactive Power BI dashboards to visualize key metrics and communicate data-driven findings to stakeholders.</li>
+        <li>Performed data cleaning and transformation to improve data accuracy and support better decision-making.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Web Development Intern</div>
+          <div class="entry-sub">InternStudio</div>
+        </div>
+        <div class="entry-date">September 2024</div>
+      </div>
+      <ul>
+        <li>Gained hands-on experience with HTML and frontend development tools, building responsive and interactive web interfaces.</li>
+        <li>Strengthened understanding of design integration and user-centric layout building under mentorship.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section>
+    <div class="section-label">Projects</div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Local AI Agent</div>
+          <div class="entry-sub">Academic Project</div>
+        </div>
+        <div class="entry-date">Dec 2025 – Present</div>
+      </div>
+      <ul>
+        <li>Developed a local AI agent using LLaMA to interpret natural language commands and execute system-level tasks such as opening applications and managing settings.</li>
+        <li>Designed command parsing logic to map user inputs to automated actions (launching apps, toggling Wi-Fi), improving usability and response accuracy.</li>
+        <li>Integrated lightweight automation scripts and system APIs for seamless offline functionality, ensuring fast and privacy-focused execution.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Machine Code Translator — Phase 2 (Advanced)</div>
+          <div class="entry-sub">Academic Project</div>
+        </div>
+        <div class="entry-date">Jul – Oct 2025</div>
+      </div>
+      <ul>
+        <li>Enhanced the translator by improving IR design and optimizing code generation for better accuracy and performance.</li>
+        <li>Developed a web-based interface featuring code input/output and time complexity analysis.</li>
+        <li>Extended support for complex Python constructs and edge cases while refactoring the architecture for scalability.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Machine Code Translator — Phase 1</div>
+          <div class="entry-sub">Academic Project</div>
+        </div>
+        <div class="entry-date">Nov 2024 – Apr 2025</div>
+      </div>
+      <ul>
+        <li>Built a source-to-source translator converting Python code to JavaScript using an intermediate representation (IR).</li>
+        <li>Designed a modular pipeline with parsing, IR generation, and code generation stages.</li>
+        <li>Established core translation logic to reduce manual rewriting across platforms.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Lie Detector Using Machine Learning</div>
+          <div class="entry-sub">Academic Project</div>
+        </div>
+        <div class="entry-date">Feb – Apr 2024</div>
+      </div>
+      <ul>
+        <li>Developed a multimodal ML-based lie detection system using CNN and RNN to analyse facial expressions, speech, and physiological data.</li>
+        <li>Implemented a fusion layer to integrate inputs and increase deception classification accuracy.</li>
+        <li>Addressed ethical concerns by proposing privacy safeguards and user trust-building mechanisms for AI adoption.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section>
+    <div class="section-label">About</div>
+    <div class="about-box">
+      Dedicated Computer Science major at Hindustan University with a commitment to excellence. Open to continuous learning, and adaptable to ensure effective integration of emerging technologies. Outside academics, I'm enthusiastic about football — a sport that reflects the teamwork I bring to every project. Eager to contribute my skills and drive success in innovative and challenging work.
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Manav Jaswani &nbsp;·&nbsp; Built with HTML/CSS &nbsp;·&nbsp; Deployed on Vercel
+  </footer>
+
+</div>
+</body>
+</html>
